@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -56,21 +55,4 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(totalMovement);
     }
-
-    /*public void ReceiveDamage(float _damage)
-    {
-        Life -= _damage;
-        Debug.Log(Life);
-        if (Life <= 0)
-            GameOverText.SetActive(true);
-    }
-    
-     private void ReloadSceneAfterDeath()
-    {
-        if (Life <= 0)
-        {
-            if (Input.GetButtonDown("Fire1"))
-                SceneManager.LoadScene("game");
-        }
-    }*/
 }

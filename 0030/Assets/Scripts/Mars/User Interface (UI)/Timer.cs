@@ -40,7 +40,7 @@ public class Timer : MonoBehaviour
     {
         while (remainingDurantion >= 0 && Player.GetComponent<PlayerHealth>()._playerHealth >= 0)
         {
-            uiText.text = $"{remainingDurantion / 60:00} : {remainingDurantion % 60:00}";
+            uiText.text = $"{remainingDurantion}";
             uiFill.fillAmount = Mathf.InverseLerp(0, Durantion, remainingDurantion);
             remainingDurantion--;
             yield return new WaitForSeconds(1f);

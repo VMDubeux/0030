@@ -13,18 +13,18 @@ public class Timer : MonoBehaviour
     [SerializeField] private Text uiText;
     public GameObject Player;
 
-    public int Durantion;
+    private sbyte _durantion = 90;
 
-    private int remainingDurantion;
+    private int _remainingDurantion;
 
     private void Start()
     {
-        Being(Durantion);
+        Being(_durantion);
     }
 
     private void Update()
     {
-        if (remainingDurantion >= 0 && Player.GetComponent<PlayerHealth>()._playerHealth <= 0)
+        if (_remainingDurantion >= 0 && Player.GetComponent<PlayerHealth>()._playerHealth <= 0)
         { 
 
         }
@@ -32,17 +32,17 @@ public class Timer : MonoBehaviour
 
     private void Being(int Second)
     {
-        remainingDurantion = Second;
+        _remainingDurantion = Second;
         StartCoroutine(UpdateTimer());
     }
 
     private IEnumerator UpdateTimer()
     {
-        while (remainingDurantion >= 0 && Player.GetComponent<PlayerHealth>()._playerHealth >= 0)
+        while (_remainingDurantion >= 0 && Player.GetComponent<PlayerHealth>()._playerHealth >= 0)
         {
-            uiText.text = $"{remainingDurantion}";
-            uiFill.fillAmount = Mathf.InverseLerp(0, Durantion, remainingDurantion);
-            remainingDurantion--;
+            uiText.text = $"{_remainingDurantion}";
+            uiFill.fillAmount = Mathf.InverseLerp(0, _durantion, _remainingDurantion);
+            _remainingDurantion--;
             yield return new WaitForSeconds(1f);
         }
         OnEnd();

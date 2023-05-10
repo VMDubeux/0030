@@ -5,29 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class MarsManager : MonoBehaviour
 {
-    [SerializeField] private string marsGameScene;
-    [SerializeField] private string mainMenuGameScene;
-    [SerializeField] private string _nextGameScene;
-    [SerializeField] private GameObject CanvasLose;
+    [SerializeField] private string _writeTheCurrentGameSceneName;
+    [SerializeField] private string _writeMenu;
+    [SerializeField] private string _writeTheNextGameSceneName;
+    
+    public Transform PauseMenu;
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(marsGameScene);
+        SceneManager.LoadScene(_writeTheCurrentGameSceneName);
     }
 
     public void NextGameScene()
     {
-        SceneManager.LoadScene(_nextGameScene);
+        SceneManager.LoadScene(_writeTheNextGameSceneName);
     }
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(mainMenuGameScene);
+        SceneManager.LoadScene(_writeMenu);
     }
 
-    public void LoseGame()
-    { 
-        MarsManager.Instantiate(CanvasLose);
+    public void ResumeGame() 
+    {
+        PauseMenu.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     public void ExitGame()

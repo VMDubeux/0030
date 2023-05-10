@@ -16,7 +16,7 @@ public class EnemiesNv1MoveSin : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 position = transform.position;
+        Vector3 position = transform.position;
         float sin = Mathf.Sin(position.x * Frequency) * Amplitude;
         if (Inverted)
             sin *= -1;

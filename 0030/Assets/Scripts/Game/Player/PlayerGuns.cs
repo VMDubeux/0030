@@ -11,7 +11,7 @@ public class PlayerGuns : MonoBehaviour
     public GameObject PlayerNormalBulletPrefab;
     public AudioSource PlayerIsAudioSource;
     public AudioClip PlayerAudioShoot;
-    public float PlayerBulletSpeed = 300f;
+    public float PlayerBulletSpeed = 50f;
     public float PlayerFireRateKeyX = 0.15f;
     private float _playerNextShoot = 0.0f;
 

@@ -7,11 +7,10 @@ public class EnemiesHealth : MonoBehaviour
     public GameObject PowerUpToEnablePlayerExtraGuns;
     public sbyte PointsForGive;
     private float _enemiesTotalHealth = 100.0f;
-    public GameObject CanvasMenuGameOver;
 
-    void OnCollisionEnter(Collision _colliderGameObject)
+    void OnTriggerEnter(Collider _colliderGameObject)
     {
-        if (_colliderGameObject.gameObject.tag == "PlayerBullet")
+        if (_colliderGameObject.tag == "PlayerBullet")
         {
             EnemiesTakeDamage(50);
 
@@ -23,11 +22,9 @@ public class EnemiesHealth : MonoBehaviour
             }
         }
 
-        if (_colliderGameObject.gameObject.tag == "Player")
+        if (_colliderGameObject.tag == "Player")
         {
             Destroy(_colliderGameObject.gameObject);
-            CanvasMenuGameOver.gameObject.SetActive(true);
-
         }
     }
 

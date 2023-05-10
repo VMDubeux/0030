@@ -1,19 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     public GameObject Player;
-    public Canvas CanvasMenuGameOver;
+    public GameObject MenuGameOver;
     public Transform PlayerHealthBar;
     public GameObject PlayerHealthBarFullStatusGameObject;
     private Vector3 _playerHealthBarScale;
     private float _playerHealthPercent;
     public float _playerHealth;
     public bool PlayerLasersAreEnabled;
-    public GameObject Timer;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
         _playerHealthBarScale = PlayerHealthBarFullStatusGameObject.transform.localScale;
         _playerHealthPercent = _playerHealthBarScale.x / _playerHealth;
         PlayerLasersAreEnabled = Player.GetComponent<PlayerGuns>().PlayerLasersAreEnabled;
+
     }
 
     void PlayerUpdateHealthBar()
@@ -29,33 +31,26 @@ public class PlayerHealth : MonoBehaviour
         PlayerHealthBarFullStatusGameObject.transform.localScale = _playerHealthBarScale;
     }
 
-    void OnCollisionEnter(Collision _damageFromTheEnemies)
+    void OnTriggerEnter(Collider _enemiesCollider)
     {
-        if (_damageFromTheEnemies.gameObject.tag == "EnemiesBullet")
+        if (_enemiesCollider.tag == "EnemiesBullet")
         {
             _playerHealth -= 20;
             PlayerUpdateHealthBar();
 
-            if (_playerHealth <= 0)
+            if (_playerHealth <= 0 || _enemiesCollider.tag == "Enemy")
             {
-                Timer.gameObject.SetActive(false);
-                CanvasMenuGameOver.gameObject.SetActive(true);
                 Destroy(gameObject);
-            }
-           
-            if (_damageFromTheEnemies.gameObject.tag == "Enemy")
-            {
-                CanvasMenuGameOver.gameObject.SetActive(true);
-                Destroy(gameObject);
+                MenuGameOver.SetActive(true);
             }
 
-            Destroy(_damageFromTheEnemies.gameObject);
+            Destroy(_enemiesCollider.gameObject);
             GameManager.Instance.RecordPlus(-50);
-            
-            if (PlayerLasersAreEnabled == true)
+
+            /*if (PlayerLasersAreEnabled == true)
             {
                 PlayerLasersAreEnabled = false;
-            }
+            }*/
         }
     }
 }

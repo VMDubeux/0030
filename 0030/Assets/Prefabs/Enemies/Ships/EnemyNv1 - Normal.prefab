@@ -64,14 +64,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2623963308553404940}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 13, y: 0, z: 7}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5885914847964250714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!33 &1769417140940789523
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerUpToEnablePlayerExtraGuns: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
   PointsForGive: 50
+  CanvasMenuGameOver: {fileID: 3863118192074244491, guid: fd1eda8ee657da84798931ea025b9608, type: 3}
 --- !u!114 &1504998897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,8 +278,8 @@ MonoBehaviour:
   EnemiesNormalBulletPrefab: {fileID: 3679109982489485987, guid: bbff53dd57739eb47a272ea01d19fb49, type: 3}
   EnemiesAreAudioSource: {fileID: 1504998904}
   EnemiesAudioShoot: {fileID: 8300000, guid: 599c40b6084f96d40b93764847c8d0b2, type: 3}
-  EnemiesBulletSpeed: 400
-  EnemiesFireRate: 5
+  EnemiesBulletSpeed: 35
+  EnemiesFireRate: 2
 --- !u!114 &1504998898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424a42cd3b582da4abd962f677c6c637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 55
+  EnemySpeed: 15
 --- !u!114 &575936775165317784
 MonoBehaviour:
   m_ObjectHideFlags: 0

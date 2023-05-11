@@ -81,3 +81,47 @@ public class PlayerGuns : MonoBehaviour
         }
     }
 }
+
+//Antigos códigos do repositório 0016
+
+/*if (PlayerLasersAreEnabled == true)
+{
+    PlayerIsAudioSourceLaser.PlayOneShot(PlayerAudioShootLaser);
+
+    yield return new WaitForSecondsRealtime(0.2f);
+
+    for (int k = 0; k < PlayerLasersNumber; k++)
+    {
+        var _playerLasers = Instantiate(PlayerLasersPrefab, PlayerLasersSpawnPoint[k].transform.position, PlayerLasersSpawnPoint[k].transform.rotation);
+        _playerLasers.GetComponent<Rigidbody>().velocity = PlayerLasersSpawnPoint[k].transform.right * PlayerLaserSpeed;
+    }*/
+
+/*public GameObject[] pontoDeOrigem; 
+    public GameObject tiroPrefab; 
+    public float timeToShoot;
+    private float timeSinceLastShot = 0f;
+    public float quantidadeArmas;
+    public AudioSource audioSource;
+  
+    void Update()
+    {
+        Atirar(); 
+    }
+
+    private void Atirar()     // Faz com que o player atire ao apertar espaço.
+    {
+        timeSinceLastShot += Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Space) && timeSinceLastShot >= timeToShoot)
+        {
+            for (int i = 0; i < quantidadeArmas; i++)
+            {
+                GameObject tiro = Instantiate(tiroPrefab, pontoDeOrigem[i].transform.position, pontoDeOrigem[i].transform.rotation);
+                Vector3 vector3 = transform.up * 500f;
+                tiro.GetComponent<Rigidbody>().velocity = vector3;
+                timeSinceLastShot = 0f;
+
+                audioSource.Play();
+            }
+        }
+    }*/

@@ -261,7 +261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerUpToEnablePlayerExtraGuns: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
   PointsForGive: 50
-  CanvasMenuGameOver: {fileID: 3863118192074244491, guid: fd1eda8ee657da84798931ea025b9608, type: 3}
 --- !u!114 &1504998897
 MonoBehaviour:
   m_ObjectHideFlags: 0

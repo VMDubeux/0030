@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemiesGuns : MonoBehaviour
+public class EnemiesNv2Guns : MonoBehaviour
 {
     public Transform EnemiesBulletSpawnPoint;
     public GameObject EnemiesNormalBulletPrefab;
-    //public AudioSource EnemiesAreAudioSource;
-    //public AudioClip EnemiesAudioShoot;
     public float EnemiesBulletSpeed = 200f;
     public float EnemiesFireRate = 5f;
     private float _enemiesNextShoot = 0.0f;
@@ -18,8 +16,7 @@ public class EnemiesGuns : MonoBehaviour
         {
             _enemiesNextShoot = Time.time + EnemiesFireRate;
             var _enemiesBullet = Instantiate(EnemiesNormalBulletPrefab, EnemiesBulletSpawnPoint.position, EnemiesBulletSpawnPoint.rotation);
-            _enemiesBullet.GetComponent<Rigidbody>().velocity = EnemiesBulletSpawnPoint.right * EnemiesBulletSpeed * -1.0f;
-            //EnemiesAreAudioSource.PlayOneShot(EnemiesAudioShoot);
+            _enemiesBullet.GetComponent<Rigidbody>().velocity = EnemiesBulletSpawnPoint.right * EnemiesBulletSpeed;
         }
     }
 }

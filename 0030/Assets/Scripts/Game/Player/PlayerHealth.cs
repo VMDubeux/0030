@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private float _playerHealthPercent;
     public float _playerHealth;
     public bool PlayerLasersAreEnabled;
+    public GameObject MarsManager;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_enemiesCollider.tag == "EnemiesBullet")
         {
+            Destroy(_enemiesCollider.gameObject);
             _playerHealth -= 20;
             PlayerUpdateHealthBar();
 
@@ -44,8 +46,11 @@ public class PlayerHealth : MonoBehaviour
                 MenuGameOver.SetActive(true);
             }
 
-            Destroy(_enemiesCollider.gameObject);
-            GameManager.Instance.RecordPlus(-50);
+            if (MarsManager.GetComponent<GameManager>().PlayerScore >= 0)
+            {
+                Debug.Log("Diminuiu a pontuação?");
+                MarsManager.GetComponent<GameManager>().PlayerScore -= 50;
+            }
 
             /*if (PlayerLasersAreEnabled == true)
             {

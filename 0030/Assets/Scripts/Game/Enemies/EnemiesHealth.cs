@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemiesHealth : MonoBehaviour
@@ -12,13 +13,15 @@ public class EnemiesHealth : MonoBehaviour
     {
         if (_colliderGameObject.tag == "PlayerBullet")
         {
+            Debug.Log("Hit");
             EnemiesTakeDamage(50);
+            Destroy(_colliderGameObject.gameObject);
 
             if (_enemiesTotalHealth <= 0)
             {
+                Destroy(gameObject);
                 GameManager.Instance.RecordPlus(PointsForGive);
                 SummonPowerUp();
-                Destroy(gameObject);
             }
         }
 

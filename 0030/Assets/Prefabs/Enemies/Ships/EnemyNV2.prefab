@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55a69a50aa3a0d499383b0840be1731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 418656276211360997, guid: 7dec23e4bc89b39469353539ac22e314, type: 3}
   PowerUpToEnablePlayerExtraGuns: {fileID: 1612221337289516, guid: 85ab2ba31682fca4e9c1e40ea154ee43, type: 3}
   PointsForGive: 75
 --- !u!114 &6717154735631609579

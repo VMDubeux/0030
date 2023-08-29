@@ -7,14 +7,8 @@ env:
 
 jobs:
   testRunner:
-    name: Test in ${{ matrix.testMode }} ✨
+    name: Test all modes ✨
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        testMode:
-          - EditMode
-          - PlayMode
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,22 +33,19 @@ jobs:
         uses: actions/cache@v2
         with:
           path: Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          key: Library-test-project
           restore-keys: |
             Library-test-project-
             Library-
 
-      - name: Run tests
-        uses: game-ci/unity-test-runner@v2
+      - name: webbertakken/unity-test-runner@v2
         id: testRunner
         with:
-          testMode: ${{ matrix.testMode }}
-          checkName: ${{ matrix.testMode }} test results
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-
+          testMode: all
+          
       - uses: actions/upload-artifact@v2
         with:
-          name: Test results (${{ matrix.testMode }})
+          name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   buildWebGL:

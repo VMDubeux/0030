@@ -11,6 +11,8 @@ public class Grabber : MonoBehaviour
     private Vector2 _startPos;
     private Vector2 _finalPos;
     private GameObject _selectedObject;
+    private bool _fingerIsDown;
+    private bool _onTarget;
 
     /*[Header("Elements:")]
     private Transform toDrag;
@@ -29,6 +31,11 @@ public class Grabber : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private string DraggingTag;*/
 
+    private void Start()
+    {
+        _fingerIsDown = false;
+    }
+
     void Update()
     {
         if (Input.touchCount > 0)
@@ -46,19 +53,27 @@ public class Grabber : MonoBehaviour
                 switch (touch.phase)
                 {
                     case TouchPhase.Began:
-                        _startPos = touch.position;
-                        Debug.Log("Começou");
+                        if (_fingerIsDown == false)
+                        {
+                            Debug.Log("Começou");
+                            _startPos = touch.position;
+                            _fingerIsDown = true;
+                        }
                         break;
 
                     case TouchPhase.Moved:
-                        Vector3 position = new(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
-                        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-                        _selectedObject.transform.position = new Vector3(worldPosition.x, 0.5f, worldPosition.z);
-                        Debug.Log("Movendo");
+                        if (_fingerIsDown)
+                        {
+                            Debug.Log("Movendo");
+                            Vector3 position = new(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
+                            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
+                            _selectedObject.transform.position = new Vector3(worldPosition.x, _selectedObject.transform.position.y, worldPosition.z);
+                        }
                         break;
 
                     case TouchPhase.Ended:
                         Debug.Log("Terminou");
+                        _fingerIsDown = false;
                         break;
                 }
             }

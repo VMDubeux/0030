@@ -1019,7 +1019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.1}
+  m_AnchoredPosition: {x: 0, y: 0.01}
   m_SizeDelta: {x: 6.75, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974870137
@@ -1243,7 +1243,7 @@ Transform:
   m_GameObject: {fileID: 1257586237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.1}
-  m_LocalScale: {x: 1.1237, y: 1.1237, z: 0.92017215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1546332845}
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 1672823470}
   m_Layer: 6
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1713,6 +1713,7 @@ GameObject:
   - component: {fileID: 2140116122}
   - component: {fileID: 2140116128}
   - component: {fileID: 2140116129}
+  - component: {fileID: 2140116130}
   m_Layer: 0
   m_Name: Dragable
   m_TagString: drag
@@ -1778,7 +1779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140116120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0.18}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1833,3 +1834,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2140116130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140116120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d11ab8cf151f09449b9a98d12c740ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

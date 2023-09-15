@@ -1087,7 +1087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246925401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.38, y: 2.07, z: 6.11}
+  m_LocalPosition: {x: -2.38, y: 1.83, z: 6.11}
   m_LocalScale: {x: 1, y: 3.663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1459,6 +1459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4febff0e508044da4132f34f46793f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1672823468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,7 +1717,7 @@ GameObject:
   - component: {fileID: 2140116128}
   - component: {fileID: 2140116129}
   - component: {fileID: 2140116130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dragable
   m_TagString: drag
   m_Icon: {fileID: 0}
@@ -1779,7 +1782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140116120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1829,10 +1832,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2140116130
 MonoBehaviour:

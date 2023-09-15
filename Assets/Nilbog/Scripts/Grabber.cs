@@ -11,6 +11,7 @@ public class Grabber : MonoBehaviour
     private Vector2 _startPos;
     private Vector2 _finalPos;
     private GameObject _selectedObject;
+    private Draggable _draggable;
     private bool _fingerIsDown;
     private bool _onTarget;
 
@@ -33,11 +34,14 @@ public class Grabber : MonoBehaviour
 
     private void Start()
     {
+        
         _fingerIsDown = false;
     }
 
     void Update()
     {
+        _draggable = GetComponent<Draggable>();
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.touches[0];
@@ -73,6 +77,7 @@ public class Grabber : MonoBehaviour
 
                     case TouchPhase.Ended:
                         Debug.Log("Terminou");
+                        _selectedObject.GetComponent<Draggable>().ResetPosition();
                         _fingerIsDown = false;
                         break;
                 }

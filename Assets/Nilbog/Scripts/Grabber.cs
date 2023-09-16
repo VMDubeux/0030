@@ -47,10 +47,10 @@ public class Grabber : MonoBehaviour
                         break;
 
                     case TouchPhase.Stationary:
-                        if (_fingerIsDown)
+                        if (_fingerIsDown == true)
                         {
                             if (_selectedObject.transform.position.y <= 4.0f)
-                                _selectedObject.transform.position = Vector3.Lerp(_selectedObject.transform.position, new Vector3(_selectedObject.transform.position.x, 5f, _selectedObject.transform.position.z), 0.9f * Time.deltaTime);
+                                _selectedObject.transform.position = Vector3.Lerp(_selectedObject.transform.position, new Vector3(0, 5f, _selectedObject.transform.position.z), 0.2f * Time.deltaTime);
                             Debug.Log("Subindo");
                         }
                         break;
@@ -59,28 +59,36 @@ public class Grabber : MonoBehaviour
                         if (_fingerIsDown)
                         {
                             Debug.Log("Movendo");
-                            if (_selectedObject.transform.position.z <= 6.3f)
+
+                            if (_selectedObject.transform.position.z <= 6.7f)
                             {
                                 Vector3 position = new(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, Camera.main.WorldToScreenPoint(_selectedObject.transform.position).z);
                                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
                                 _selectedObject.transform.position = new Vector3(worldPosition.x, _selectedObject.transform.position.y, worldPosition.z);
+                            }
+                            else if (_selectedObject.transform.position.z > 6.7f)
+                            {
+                                _selectedObject.transform.position = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, 6.5f);
                             }
                         }
                         break;
 
                     case TouchPhase.Ended:
                         Debug.Log("Terminou");
-                        _selectedObject.GetComponent<Draggable>().ResetPosition();
+                        // _selectedObject.GetComponent<Draggable>().ResetPosition();
                         _fingerIsDown = false;
                         break;
 
                     case TouchPhase.Canceled:
                         Debug.Log("Cancelado");
-                        _selectedObject.GetComponent<Draggable>().ResetPosition();
+                        //_selectedObject.GetComponent<Draggable>().ResetPosition();
                         _fingerIsDown = false;
                         break;
                 }
+
             }
+
+
         }
     }
 

@@ -155,6 +155,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.GrupoSoDeNerd.NilbogDay
+    Standalone: com.GrupoSoDeNerd.NilbogDay
   buildNumber:
     Bratwurst: 0
     Standalone: 0

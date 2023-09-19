@@ -41,14 +41,7 @@ public class Grabber : MonoBehaviour
                 case TouchPhase.Stationary:
                     if (_fingerIsDown)
                     {
-                        if (_draggingObject.transform.position.y <= 4.0f)
-                        {
-                            _draggingObject.transform.position = Vector3.Lerp(
-                                _draggingObject.transform.position,
-                                new Vector3(0, 5f, _draggingObject.transform.position.z),
-                                0.2f * Time.fixedDeltaTime);
-                            Debug.Log("Subindo");
-                        }
+                        Invoke(nameof(UpMove), 2f);
                     }
                     break;
 
@@ -56,7 +49,7 @@ public class Grabber : MonoBehaviour
                     if (_fingerIsDown && _draggingObject != null)
                     {
                         Debug.Log("Movendo");
-                        Vector3 screenTouchPos = new Vector3(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(_draggingObject.transform.position).z);
+                        Vector3 screenTouchPos = new(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(_draggingObject.transform.position).z);
                         Vector3 worldTouchPos = Camera.main.ScreenToWorldPoint(screenTouchPos);
                         float clampedZ = Mathf.Clamp(worldTouchPos.z, float.MinValue, 6.7f);
                         _draggingObject.transform.position = new Vector3(worldTouchPos.x, _draggingObject.transform.position.y, clampedZ);
@@ -69,17 +62,33 @@ public class Grabber : MonoBehaviour
                     {
                         Debug.Log("Terminou");
                         _fingerIsDown = false;
-                        _draggingObject = null;
+                        if (_draggingObject != null)
+                        {
+                            _draggingObject.GetComponent<Draggable>().ResetPosition();
+                            _draggingObject = null;
+                        }
                     }
                     break;
             }
         }
     }
 
+    private void UpMove()
+    {
+        if (_draggingObject.transform.position.y <= 4.0f)
+        {
+            _draggingObject.transform.position = Vector3.Lerp(
+                _draggingObject.transform.position,
+                new Vector3(0, 5f, _draggingObject.transform.position.z),
+                0.2f * Time.fixedDeltaTime);
+            Debug.Log("Subindo");
+        }
+    }
+
     private RaycastHit CastRay()
     {
-        Vector3 screenTouchPosFar = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, Camera.main.farClipPlane);
-        Vector3 screenTouchPosNear = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, Camera.main.nearClipPlane);
+        Vector3 screenTouchPosFar = new(Input.touches[0].position.x, Input.touches[0].position.y, Camera.main.farClipPlane);
+        Vector3 screenTouchPosNear = new(Input.touches[0].position.x, Input.touches[0].position.y, Camera.main.nearClipPlane);
         Vector3 worldTouchPosFar = Camera.main.ScreenToWorldPoint(screenTouchPosFar);
         Vector3 worldTouchPosNear = Camera.main.ScreenToWorldPoint(screenTouchPosNear);
         RaycastHit hit;

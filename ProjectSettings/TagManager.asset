@@ -6,6 +6,7 @@ TagManager:
   tags:
   - drag
   - target
+  - Cube
   layers:
   - Default
   - TransparentFX

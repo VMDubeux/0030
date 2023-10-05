@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Verification : MonoBehaviour
 {
+    public GameObject ImagemCanvas;
     [SerializeField] private Verification[] _input = new Verification[2];
     [SerializeField] private Verification _output;
     [SerializeField] private bool _status;
@@ -18,6 +19,7 @@ public class Verification : MonoBehaviour
     private void OnMouseDown()
     {
         Active();
+        gameObject.SetActive(false);
     }
 
     private void Connect()

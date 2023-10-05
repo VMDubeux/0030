@@ -11,5 +11,7 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: ae33129447f39194a86965d0bed40ee0,
       type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 77e3d1e81bfec0a44b019525e23beda3, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: a64672fb6a35e104c865630161a1050f, type: 2}

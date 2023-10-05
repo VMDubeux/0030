@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Verification))]
 public class Draggable : MonoBehaviour
 {
     private Vector3 _startPosition = Vector3.zero;

@@ -10,7 +10,7 @@ public class Grabber : MonoBehaviour
 
     #region Private Fields
     private GameObject _draggingObject;
-    private bool _fingerIsDown;
+    //private bool _fingerIsDown;
     private Vector2 _lastTouchPosition;
     private float _stationaryTime = 0f;
     private Camera _camera;
@@ -23,7 +23,7 @@ public class Grabber : MonoBehaviour
 
     private void Start()
     {
-        _fingerIsDown = false;
+        //_fingerIsDown = false;
     }
 
     void Update()
